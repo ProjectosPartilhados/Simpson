@@ -15,7 +15,26 @@ public class Simpson {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        double limite_superior = 4;
+        double limite_inferior = 1;
+        int n = 6;
+        double h;
+        double pa = limite_inferior;
+
+        h = (limite_superior - limite_inferior) / n;
+
+        System.out.println("h= " + h);
+        for (int i = 0; i <= n; i++) {
+            if (i==0) {
+                pa = pa; 
+            }else{
+              pa = pa + h;
+            }
+           
+            System.out.println(pa);
+
+        }
+
     }
-    
+
 }
