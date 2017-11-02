@@ -17,7 +17,7 @@ public class Simpson {
     public static void main(String[] args) {
         double limite_superior = 4;
         double limite_inferior = 1;
-        int n = 6;
+        int n = 8;
         double h;
         double pa = limite_inferior;
 
@@ -25,13 +25,21 @@ public class Simpson {
 
         System.out.println("h= " + h);
         for (int i = 0; i <= n; i++) {
-            if (i==0) {
-                pa = pa; 
-            }else{
-              pa = pa + h;
+            if (i == 0) {
+                pa = pa;
+            } else {
+                pa = pa + h;
             }
-           
-            System.out.println(pa);
+            
+           // System.out.println(i);
+            if ((i != 0) && (i !=n) && ((i % 2) == 0)) {
+             //   System.out.println("I  Par = " + i);
+            }
+            if ((i != 0) && (i !=n) && ((i % 3) == 0)) {
+                  System.out.println("I  Impar = " + i);
+            } 
+
+            //System.out.println(pa);
 
         }
 
