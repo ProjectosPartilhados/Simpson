@@ -20,15 +20,13 @@ public class Simpson {
         int n = 8;
         double h;
         double pa = limite_inferior;
-        double x=1;
-        double f1=0 ,fn=0, fi;
+        double x = 1;
+        double f1 = 0, fn = 0, fi;
 
         h = (limite_superior - limite_inferior) / n;
-        
-         // 4 impares e 2 pares
-         
-        
-         double formula =h/3*(f1+fn);
+
+        // 4 impares e 2 pares
+        double formula = h / 3 * (f1 + fn);
 
         System.out.println("h= " + h);
         for (int i = 0; i <= n; i++) {
@@ -37,19 +35,22 @@ public class Simpson {
             } else {
                 pa = pa + h;
             }
-            
-           // System.out.println(i);
-            if ((i != 0) && (i !=n) && ((i % 2) == 0)) {
-               System.out.println("I  Par = " + i);
-            }else{
-                if ((i != 0) &&(i !=n)) {
-                    System.out.println("I  Impar = " + i);
+
+            // System.out.println(i);
+            if ((i != 0) && (i != n) && ((i % 2) == 0)) {
+//               System.out.println("I  Par = " + i);
+            } else {
+                if ((i != 0) && (i != n)) {
+//                    System.out.println("I  Impar = " + i);
                 }
-               
+
             }
-           
-             double funcao= 
-      
+
+            System.out.println("Pa" + pa);
+
+            double funcao = (pa * pa);
+            System.out.println("Valor de Cada Funcao:" + funcao);
+
         }
 
     }
