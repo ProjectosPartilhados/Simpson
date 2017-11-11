@@ -23,6 +23,8 @@ public class Simpson {
         double x = 1;
         double f1 = 0, fn = 0, fi;
 
+        double funcao_par = 1, funcao_impar = 1;
+
         h = (limite_superior - limite_inferior) / n;
 
         // 4 impares e 2 pares
@@ -36,21 +38,25 @@ public class Simpson {
                 pa = pa + h;
             }
 
-            // System.out.println(i);
+            // System.out.println(i); quando FOR pAR
             if ((i != 0) && (i != n) && ((i % 2) == 0)) {
 //               System.out.println("I  Par = " + i);
+                funcao_par = pa * pa;
+//                System.out.println("Valor de Cada Funcao Par:" + funcao_par);
             } else {
+                // Quando FOR IMPAR
                 if ((i != 0) && (i != n)) {
 //                    System.out.println("I  Impar = " + i);
+                    funcao_impar = pa * pa;
+                    System.out.println("Valor de Cada Funcao ImPar:" + funcao_par);
+
                 }
 
             }
 
-            System.out.println("Pa" + pa);
-
-            double funcao = (pa * pa);
-            System.out.println("Valor de Cada Funcao:" + funcao);
-
+//            System.out.println("Pa" + pa);
+            //double funcao = (pa * pa);
+//            System.out.println("Valor de Cada Funcao Par:" + funcao_par);
         }
 
     }
