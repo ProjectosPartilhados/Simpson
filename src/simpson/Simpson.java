@@ -61,19 +61,24 @@ public class Simpson {
                     soma_extremos = soma_extremos + fo;
 
                     System.out.println("indice" + i);
-                    System.out.println("F" + i + " = " + fo);
+                    System.out.println("F" + i + " = " + fo+"\n");
 
                 }
 
             }
 
-            double formula = h / 3 * (f1 + fn);
+           
         }
         
+        System.out.println("h = " + h);
+        System.out.println("Soma De Valores Pares: " + soma_par);
+        System.out.println("Soma De Extremos: " + soma_extremos);
+        System.out.println("Soma De Valores Impares: " + soma_impar+"\n");
         
-        System.out.println("Soma De Valores Pares" + soma_par);
-        System.out.println("Soma De Extremos" + soma_par);
-        System.out.println("Soma De Valores Impares" + soma_impar);
+         double formula = (h / 3) * (soma_extremos+ 4*soma_impar+ 2*soma_par);
+         
+         System.out.println("Area da Figura= "+formula);
+         
 
     }
 
