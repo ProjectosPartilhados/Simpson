@@ -16,7 +16,8 @@ import javax.swing.ListSelectionModel;
  */
 public class TelaSimpson extends javax.swing.JFrame {
 
-    ArrayList dados = new ArrayList();
+   ArrayList dados = new ArrayList();
+  
 
     ModeloTabela modelo;
 
@@ -233,7 +234,7 @@ public class TelaSimpson extends javax.swing.JFrame {
         double x = 1;
         double f1 = 0, fn = 0, fi;
 
-        double funcao_par = 1, funcao_impar;
+        double funcao_par = 1, funcao_impar=1;
 
         h = (limite_superior - limite_inferior) / n;
 
@@ -311,6 +312,7 @@ public class TelaSimpson extends javax.swing.JFrame {
 //                System.out.println("Valor de Cada Funcao Par:" + funcao_par);
 
                     System.out.println("F" + i + " = " + funcao_par);
+                  
 
                 } else {
                     // Quando FOR IMPAR
@@ -321,6 +323,7 @@ public class TelaSimpson extends javax.swing.JFrame {
 
 //                    System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
                         System.out.println("F" + i + " = " + funcao_impar);
+                        
 
                     } else {
                         double fo = pa * pa;
@@ -328,18 +331,17 @@ public class TelaSimpson extends javax.swing.JFrame {
 
 //                    System.out.println("indice" + i);
                         System.out.println("F" + i + " = " + fo + "\n");
-
+                      
+                    
                     }
 
                 }
 
-//                colunas[i] = "F" + i;
-//                dados.add(i);
-                   
-//                dados.add(new Object[i]);
+                
+              
 
             }
-            dados.add(new Object[]{"","", "", ""});
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
