@@ -18,7 +18,6 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     ArrayList dados = new ArrayList();
 
-   
     ModeloTabela modelo;
 
     /**
@@ -26,7 +25,7 @@ public class TelaSimpson extends javax.swing.JFrame {
      */
     public TelaSimpson() {
         initComponents();
-        PreencherTabela();
+
     }
 
     /**
@@ -42,7 +41,16 @@ public class TelaSimpson extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelacsimpson = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbfuncao = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        txt_extremo_inferior = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txt_extremo_superior = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        lbh = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txt_n = new javax.swing.JTextField();
+        btn_calcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,18 +69,56 @@ public class TelaSimpson extends javax.swing.JFrame {
 
         jLabel1.setText("Tipo de Funcao:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbfuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afim", "Quadratica", "exponecial" }));
+
+        jLabel2.setText("Extremo_Inferior:");
+
+        jLabel3.setText("Extremo_Superior:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("h =");
+
+        lbh.setText("valor de incremento h");
+
+        jLabel6.setText("Valor de n :");
+
+        btn_calcular.setText("Calcular");
+        btn_calcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_calcularActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbfuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_extremo_inferior, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_calcular)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_extremo_superior)
+                                .addComponent(txt_n, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))))
+                .addGap(0, 271, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,8 +126,24 @@ public class TelaSimpson extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+                    .addComponent(cbfuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_extremo_inferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txt_extremo_superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txt_n, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(btn_calcular)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -99,6 +161,17 @@ public class TelaSimpson extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(787, 518));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
+        PreencherTabela();
+        
+        double limite_superior = Integer.parseInt(txt_extremo_superior.getText());
+        double limite_inferior = Integer.parseInt(txt_extremo_inferior.getText());
+        double h;
+        h = (limite_superior - limite_inferior) / Integer.parseInt(txt_n.getText());
+        lbh.setText(""+h);
+
+    }//GEN-LAST:event_btn_calcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,12 +210,11 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     public void PreencherTabela() {
 
-        
-         String[] colunas =new String[4];
-        for (int i = 0; i < 4; i++) {
+        String[] colunas = new String[Integer.parseInt(txt_n.getText()) + 1];
+        for (int i = 0; i <= Integer.parseInt(txt_n.getText()); i++) {
 
-          colunas[i]="F" + i;
-          
+            colunas[i] = "F" + i;
+
             modelo = new ModeloTabela(dados, colunas);
 
             tabelacsimpson.setModel(modelo);
@@ -159,10 +231,19 @@ public class TelaSimpson extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btn_calcular;
+    private javax.swing.JComboBox<String> cbfuncao;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbh;
     private javax.swing.JTable tabelacsimpson;
+    private javax.swing.JTextField txt_extremo_inferior;
+    private javax.swing.JTextField txt_extremo_superior;
+    private javax.swing.JTextField txt_n;
     // End of variables declaration//GEN-END:variables
 }
