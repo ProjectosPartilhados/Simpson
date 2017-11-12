@@ -28,8 +28,12 @@ public class Simpson {
         h = (limite_superior - limite_inferior) / n;
 
         // 4 impares e 2 pares
-        double formula = h / 3 * (f1 + fn);
-
+      
+       double soma_par=0, soma_impar, soma_extremos=0;
+        
+        
+          
+        
         System.out.println("h= " + h);
         for (int i = 0; i <= n; i++) {
             if (i == 0) {
@@ -60,9 +64,7 @@ public class Simpson {
 
             }
 
-//            System.out.println("Pa" + pa);
-            //double funcao = (pa * pa);
-//            System.out.println("Valor de Cada Funcao Par:" + funcao_par);
+           double formula = h / 3 * (f1 + fn);
         }
 
     }
