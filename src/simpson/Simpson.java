@@ -45,7 +45,7 @@ public class Simpson {
                 soma_par = soma_par + funcao_par;
                 System.out.println("Valor de Cada Funcao Par:" + funcao_par);
                 System.out.println("F" + i + " = " + funcao_par);
-                System.out.println("Soma De Valores Pares" + soma_par);
+
             } else {
                 // Quando FOR IMPAR
                 if ((i != 0) && (i != n)) {
@@ -55,7 +55,6 @@ public class Simpson {
 
                     System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
                     System.out.println("F" + i + " = " + funcao_impar);
-                    System.out.println("Soma De Valores Impares" + soma_impar);
 
                 } else {
                     double fo = pa * pa;
@@ -63,14 +62,18 @@ public class Simpson {
 
                     System.out.println("indice" + i);
                     System.out.println("F" + i + " = " + fo);
-                    
-                    System.out.println("Soma De Extremos" + soma_par);
+
                 }
 
             }
 
             double formula = h / 3 * (f1 + fn);
         }
+        
+        
+        System.out.println("Soma De Valores Pares" + soma_par);
+        System.out.println("Soma De Extremos" + soma_par);
+        System.out.println("Soma De Valores Impares" + soma_impar);
 
     }
 
