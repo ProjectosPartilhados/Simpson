@@ -20,6 +20,9 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     ModeloTabela modelo;
 
+//    declarando variaveis
+    double limite_superior, limite_inferior, h;
+
     /**
      * Creates new form TelaSimpson
      */
@@ -56,10 +59,7 @@ public class TelaSimpson extends javax.swing.JFrame {
 
         tabelacsimpson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -102,23 +102,24 @@ public class TelaSimpson extends javax.swing.JFrame {
                         .addComponent(cbfuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(78, 78, 78)
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_extremo_inferior, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93)
+                        .addComponent(btn_calcular))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel3)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_calcular)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txt_extremo_superior, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel6))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_extremo_superior)
-                                .addComponent(txt_n, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))))
-                .addGap(0, 271, Short.MAX_VALUE))
+                                .addComponent(txt_extremo_inferior, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                .addComponent(txt_n)))))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,22 +129,21 @@ public class TelaSimpson extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(cbfuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_extremo_inferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_calcular))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txt_extremo_superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_extremo_inferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(txt_n, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(btn_calcular)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -164,12 +164,12 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
         PreencherTabela();
-        
-        double limite_superior = Integer.parseInt(txt_extremo_superior.getText());
-        double limite_inferior = Integer.parseInt(txt_extremo_inferior.getText());
-        double h;
+
+        limite_superior = Integer.parseInt(txt_extremo_superior.getText());
+        limite_inferior = Integer.parseInt(txt_extremo_inferior.getText());
+
         h = (limite_superior - limite_inferior) / Integer.parseInt(txt_n.getText());
-        lbh.setText(""+h);
+        lbh.setText("" + h);
 
     }//GEN-LAST:event_btn_calcularActionPerformed
 
@@ -226,6 +226,124 @@ public class TelaSimpson extends javax.swing.JFrame {
         }
         this.tabelacsimpson.setAutoResizeMode(tabelacsimpson.AUTO_RESIZE_ALL_COLUMNS);
         this.tabelacsimpson.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        int n = Integer.parseInt(txt_n.getText());
+
+        double pa = limite_inferior;
+        double x = 1;
+        double f1 = 0, fn = 0, fi;
+
+        double funcao_par = 1, funcao_impar;
+
+        h = (limite_superior - limite_inferior) / n;
+
+        // 4 impares e 2 pares
+        double soma_par = 0, soma_impar = 0, soma_extremos = 0;
+
+        System.out.println("h= " + h);
+
+        for (int i = 0; i <= n; i++) {
+            if (i == 0) {
+                pa = pa;
+            } else {
+                pa = pa + h;
+            }
+
+            // System.out.println(i); quando FOR pAR
+            if ((i != 0) && (i != n) && ((i % 2) == 0)) {
+                System.out.println("I  Par = " + i);
+                funcao_par = pa * pa;
+                soma_par = soma_par + funcao_par;
+                System.out.println("Valor de Cada Funcao Par:" + funcao_par);
+                System.out.println("F" + i + " = " + funcao_par);
+
+            } else {
+                // Quando FOR IMPAR
+                if ((i != 0) && (i != n)) {
+                    System.out.println("I  Impar = " + i);
+                    funcao_impar = pa * pa;
+                    soma_impar = soma_impar + funcao_impar;
+
+                    System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
+                    System.out.println("F" + i + " = " + funcao_impar);
+
+                } else {
+                    double fo = pa * pa;
+                    soma_extremos = soma_extremos + fo;
+
+                    System.out.println("indice" + i);
+                    System.out.println("F" + i + " = " + fo + "\n");
+
+                }
+
+            }
+
+        }
+
+        System.out.println("h = " + h);
+        System.out.println("Soma De Valores Pares: " + soma_par);
+        System.out.println("Soma De Extremos: " + soma_extremos);
+        System.out.println("Soma De Valores Impares: " + soma_impar + "\n");
+
+        double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
+
+        System.out.println("Area da Figura= " + formula);
+
+//        Por Resultado Na Tabela
+        try {
+
+            for (int i = 0; i <= n; i++) {
+
+//              dados.add(new Object[]{});
+                // dados.add(new Object[]{});
+                // dados.add(colunas[i]);
+                if (i == 0) {
+                    pa = pa;
+                } else {
+                    pa = pa + h;
+                }
+
+                // System.out.println(i); quando FOR pAR
+                if ((i != 0) && (i != n) && ((i % 2) == 0)) {
+//                System.out.println("I  Par = " + i);
+                    funcao_par = pa * pa;
+                    soma_par = soma_par + funcao_par;
+//                System.out.println("Valor de Cada Funcao Par:" + funcao_par);
+
+                    System.out.println("F" + i + " = " + funcao_par);
+
+                } else {
+                    // Quando FOR IMPAR
+                    if ((i != 0) && (i != n)) {
+//                        System.out.println("I  Impar = " + i);
+                        funcao_impar = pa * pa;
+                        soma_impar = soma_impar + funcao_impar;
+
+//                    System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
+                        System.out.println("F" + i + " = " + funcao_impar);
+
+                    } else {
+                        double fo = pa * pa;
+                        soma_extremos = soma_extremos + fo;
+
+//                    System.out.println("indice" + i);
+                        System.out.println("F" + i + " = " + fo + "\n");
+
+                    }
+
+                }
+
+//                colunas[i] = "F" + i;
+//                dados.add(i);
+                   
+//                dados.add(new Object[i]);
+
+            }
+            dados.add(new Object[]{"","", "", ""});
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
+        }
 
     }
 
