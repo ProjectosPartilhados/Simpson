@@ -5,17 +5,28 @@
  */
 package Visao;
 
+import Modelo.ModeloTabela;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+
 /**
  *
  * @author Misael
  */
 public class TelaSimpson extends javax.swing.JFrame {
 
+    ArrayList dados = new ArrayList();
+
+   
+    ModeloTabela modelo;
+
     /**
      * Creates new form TelaSimpson
      */
     public TelaSimpson() {
         initComponents();
+        PreencherTabela();
     }
 
     /**
@@ -28,18 +39,50 @@ public class TelaSimpson extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelacsimpson = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tabelacsimpson.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tabelacsimpson);
+
+        jLabel1.setText("Tipo de Funcao:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 771, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -92,7 +135,34 @@ public class TelaSimpson extends javax.swing.JFrame {
         });
     }
 
+    public void PreencherTabela() {
+
+        
+         String[] colunas =new String[4];
+        for (int i = 0; i < 4; i++) {
+
+          colunas[i]="F" + i;
+          
+            modelo = new ModeloTabela(dados, colunas);
+
+            tabelacsimpson.setModel(modelo);
+
+            this.tabelacsimpson.getColumnModel().getColumn(i).setPreferredWidth(100);
+
+            this.tabelacsimpson.getColumnModel().getColumn(i).setResizable(false);
+
+        }
+        this.tabelacsimpson.setAutoResizeMode(tabelacsimpson.AUTO_RESIZE_ALL_COLUMNS);
+        this.tabelacsimpson.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelacsimpson;
     // End of variables declaration//GEN-END:variables
 }
