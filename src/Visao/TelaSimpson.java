@@ -6,6 +6,7 @@
 package Visao;
 
 import Modelo.ModeloTabela;
+import java.awt.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -16,8 +17,7 @@ import javax.swing.ListSelectionModel;
  */
 public class TelaSimpson extends javax.swing.JFrame {
 
-   ArrayList dados = new ArrayList();
-  
+    ArrayList dados = new ArrayList();
 
     ModeloTabela modelo;
 
@@ -234,7 +234,7 @@ public class TelaSimpson extends javax.swing.JFrame {
         double x = 1;
         double f1 = 0, fn = 0, fi;
 
-        double funcao_par = 1, funcao_impar=1;
+        double funcao_par = 1, funcao_impar = 1;
 
         h = (limite_superior - limite_inferior) / n;
 
@@ -242,6 +242,8 @@ public class TelaSimpson extends javax.swing.JFrame {
         double soma_par = 0, soma_impar = 0, soma_extremos = 0;
 
         System.out.println("h= " + h);
+
+        ArrayList lista = new ArrayList<Object>();
 
         for (int i = 0; i <= n; i++) {
             if (i == 0) {
@@ -257,6 +259,7 @@ public class TelaSimpson extends javax.swing.JFrame {
                 soma_par = soma_par + funcao_par;
                 System.out.println("Valor de Cada Funcao Par:" + funcao_par);
                 System.out.println("F" + i + " = " + funcao_par);
+                lista.add(funcao_par);
 
             } else {
                 // Quando FOR IMPAR
@@ -268,81 +271,86 @@ public class TelaSimpson extends javax.swing.JFrame {
                     System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
                     System.out.println("F" + i + " = " + funcao_impar);
 
+                    lista.add(funcao_impar);
                 } else {
                     double fo = pa * pa;
                     soma_extremos = soma_extremos + fo;
 
                     System.out.println("indice" + i);
                     System.out.println("F" + i + " = " + fo + "\n");
-
+                    lista.add(fo);
                 }
 
             }
 
         }
 
-        System.out.println("h = " + h);
-        System.out.println("Soma De Valores Pares: " + soma_par);
-        System.out.println("Soma De Extremos: " + soma_extremos);
-        System.out.println("Soma De Valores Impares: " + soma_impar + "\n");
+        
+        
+//        System.out.println("h = " + h);
+//        System.out.println("Soma De Valores Pares: " + soma_par);
+//        System.out.println("Soma De Extremos: " + soma_extremos);
+//        System.out.println("Soma De Valores Impares: " + soma_impar + "\n");
+//
+//        double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
+//
+//        System.out.println("Area da Figura= " + formula);
 
-        double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
 
-        System.out.println("Area da Figura= " + formula);
-
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println("Valor"+i+":"+lista.get(i).toString()+"\n");
+        }
 //        Por Resultado Na Tabela
         try {
 
-            for (int i = 0; i <= n; i++) {
+            for (int i = 0; i < lista.size(); i++) {
 
-//              dados.add(new Object[]{});
-                // dados.add(new Object[]{});
-                // dados.add(colunas[i]);
-                if (i == 0) {
-                    pa = pa;
-                } else {
-                    pa = pa + h;
-                }
-
-                // System.out.println(i); quando FOR pAR
-                if ((i != 0) && (i != n) && ((i % 2) == 0)) {
-//                System.out.println("I  Par = " + i);
-                    funcao_par = pa * pa;
-                    soma_par = soma_par + funcao_par;
-//                System.out.println("Valor de Cada Funcao Par:" + funcao_par);
-
-                    System.out.println("F" + i + " = " + funcao_par);
-                  
-
-                } else {
-                    // Quando FOR IMPAR
-                    if ((i != 0) && (i != n)) {
-//                        System.out.println("I  Impar = " + i);
-                        funcao_impar = pa * pa;
-                        soma_impar = soma_impar + funcao_impar;
-
-//                    System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
-                        System.out.println("F" + i + " = " + funcao_impar);
-                        
-
-                    } else {
-                        double fo = pa * pa;
-                        soma_extremos = soma_extremos + fo;
-
-//                    System.out.println("indice" + i);
-                        System.out.println("F" + i + " = " + fo + "\n");
-                      
-                    
-                    }
-
-                }
-
-                
-              
+               // dados.add(new Object[]{lista.get(i)});
 
             }
-            
 
+//            for (int i = 0; i <= n; i++) {
+//
+////              dados.add(new Object[]{});
+//                // dados.add(new Object[]{});
+//                // dados.add(colunas[i]);
+//                if (i == 0) {
+//                    pa = pa;
+//                } else {
+//                    pa = pa + h;
+//                }
+//
+//                // System.out.println(i); quando FOR pAR
+//                if ((i != 0) && (i != n) && ((i % 2) == 0)) {
+////                System.out.println("I  Par = " + i);
+//                    funcao_par = pa * pa;
+//                    soma_par = soma_par + funcao_par;
+////                System.out.println("Valor de Cada Funcao Par:" + funcao_par);
+//
+//                    System.out.println("F" + i + " = " + funcao_par);
+//
+//                } else {
+//                    // Quando FOR IMPAR
+//                    if ((i != 0) && (i != n)) {
+////                        System.out.println("I  Impar = " + i);
+//                        funcao_impar = pa * pa;
+//                        soma_impar = soma_impar + funcao_impar;
+//
+////                    System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
+//                        System.out.println("F" + i + " = " + funcao_impar);
+//
+//                    } else {
+//                        double fo = pa * pa;
+//                        soma_extremos = soma_extremos + fo;
+//
+////                    System.out.println("indice" + i);
+//                        System.out.println("F" + i + " = " + fo + "\n");
+//
+//                    }
+//
+//                }
+//
+//            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
         }
