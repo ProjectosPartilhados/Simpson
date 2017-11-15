@@ -5,6 +5,8 @@
  */
 package Visao;
 
+import org.math.plot.Plot2DPanel;
+
 /**
  *
  * @author Miguel
@@ -16,6 +18,10 @@ public class TelaSecante extends javax.swing.JFrame {
      */
     public TelaSecante() {
         initComponents();
+        grafica.setBounds(100, 200, 300, 300);
+        add(grafica);
+//        panelgrafica.add(grafica);
+//        add(panelgrafica.add(grafica));
     }
 
     /**
@@ -41,6 +47,7 @@ public class TelaSecante extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txt_max = new javax.swing.JTextField();
         btncalcular = new javax.swing.JButton();
+        panelgrafica = new javax.swing.JPanel();
 
         jLabel2.setText("jLabel2");
 
@@ -71,6 +78,17 @@ public class TelaSecante extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout panelgraficaLayout = new javax.swing.GroupLayout(panelgrafica);
+        panelgrafica.setLayout(panelgraficaLayout);
+        panelgraficaLayout.setHorizontalGroup(
+            panelgraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelgraficaLayout.setVerticalGroup(
+            panelgraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,6 +111,10 @@ public class TelaSecante extends javax.swing.JFrame {
                             .addComponent(txtfuncao)
                             .addComponent(txt_0))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btncalcular)
+                        .addGap(45, 45, 45))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -105,10 +127,9 @@ public class TelaSecante extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_max)))
                         .addContainerGap(165, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btncalcular)
-                        .addGap(45, 45, 45))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(panelgrafica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,11 +155,16 @@ public class TelaSecante extends javax.swing.JFrame {
                     .addComponent(txt_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(txt_max, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(lbraiz, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(lbraiz, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(193, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(panelgrafica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -146,24 +172,31 @@ public class TelaSecante extends javax.swing.JFrame {
 
     private void btncalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalcularActionPerformed
 
-       
         String funcao = txtfuncao.getText();
-        
-        double l0= Double.parseDouble(txt_0.getText());
-        double l1= Double.parseDouble(txt_1.getText());
+
+        double l0 = Double.parseDouble(txt_0.getText());
+        double l1 = Double.parseDouble(txt_1.getText());
         double erro = Double.parseDouble(txt_erro.getText());
-        int ln =Integer.parseInt(txt_max.getText());
-        
-         funcao f = new funcao(funcao);
+        int ln = Integer.parseInt(txt_max.getText());
+
+        funcao f = new funcao(funcao);
 
         Secante s = new Secante();
-        
-        double raiz =s.raiz(f, l0, l1, ln, erro);
-        
-        lbraiz.setText(""+raiz);
-        
-        
-        
+
+        double raiz = s.raiz(f, l0, l1, ln, erro);
+
+        lbraiz.setText("" + raiz);
+        double[] x = new double[200];
+        double[] y = new double[200];
+        double xi = l0 - 10;
+        for (int i = 0; i < 200; i++) {
+            x[i] = xi + i * 0.1;
+            y[i] = f.eval(x[i]);
+
+        }
+        grafica.addLegend("SOUTH");
+        grafica.removeAllPlots();
+        grafica.addLinePlot(funcao, x,y);
 
 
     }//GEN-LAST:event_btncalcularActionPerformed
@@ -213,10 +246,13 @@ public class TelaSecante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lbraiz;
+    private javax.swing.JPanel panelgrafica;
     private javax.swing.JTextField txt_0;
     private javax.swing.JTextField txt_1;
     private javax.swing.JTextField txt_erro;
     private javax.swing.JTextField txt_max;
     private javax.swing.JTextField txtfuncao;
     // End of variables declaration//GEN-END:variables
+
+    Plot2DPanel grafica = new Plot2DPanel();
 }
