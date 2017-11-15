@@ -26,4 +26,14 @@ public class funcao {
         }
     }
 
+    public double eval(double x) {
+        double r;
+        j.addVariable("x", x);
+        r = j.getValue();
+        if (j.hasError()) {
+            System.out.println("ERRO" + j.getErrorInfo());
+        }
+        return r;
+    }
+
 }
