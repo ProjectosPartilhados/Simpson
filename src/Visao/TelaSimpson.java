@@ -221,22 +221,7 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
 
-//        double b = Double.parseDouble(txt_b.getText());
-//        double a = Double.parseDouble(txt_a.getText());
-//        
-//        if (txt_b.getText().equals("") || txt_a.getText().equals("") || txt_n.getText().equals("")) {
-//
-//            JOptionPane.showMessageDialog(null, "Os Campos b , a e n nao deve, ser nulos");
-//        } else {
-//
-//            if (b <=a) {
-//                JOptionPane.showMessageDialog(null, "b>a");
-//
-//            } else {
-////                h = (limite_superior - limite_inferior) / Integer.parseInt(txt_n.getText());
-////                lbh.setText("" + h);
-//            }
-//        }
+      
         PreencherTabela();
     }//GEN-LAST:event_btn_calcularActionPerformed
 
@@ -297,16 +282,19 @@ public class TelaSimpson extends javax.swing.JFrame {
         // DECLARANDO O H
         h = (b - a) / n;
 
+        DecimalFormat df2 = new DecimalFormat("0.#####");
+        String hh = df2.format(h);
+
         // 4 impares e 2 pares DELARANDO VARIAVEIS RELACIONADAS A FORMULAS
         double soma_par = 0, soma_impar = 0, soma_extremos = 0;
 
         // DECLARANDO UMA LISTA QUE RECEBERA TODOS OS VALORES EM CADA ITERACAO
         ArrayList lista = new ArrayList<String>();
 
-        ArrayList listaX = new ArrayList<Double>();
+        ArrayList listaX = new ArrayList<String>();
 
         // ATRIBUINDO O H A TEXTFIELD
-        lbh.setText("" + h);
+        lbh.setText("" + hh);
 
         for (int i = 0; i <= n; i++) {
             if (i == 0) {
@@ -326,8 +314,10 @@ public class TelaSimpson extends javax.swing.JFrame {
 
                 funcao_par = X * X;
                 soma_par = soma_par + funcao_par;
+                DecimalFormat df = new DecimalFormat("0.#####");
+                String fpar = df.format(soma_par);
 
-                lista.add(funcao_par);
+                lista.add(fpar);
 
             } else {
 
@@ -337,13 +327,19 @@ public class TelaSimpson extends javax.swing.JFrame {
                     funcao_impar = X * X;
                     soma_impar = soma_impar + funcao_impar;
 
-                    lista.add(funcao_impar);
+                    DecimalFormat df = new DecimalFormat("0.#####");
+                    String fimpar = df.format(soma_impar);
+
+                    lista.add(fimpar);
 
                 } else {
                     double f_extremo = X * X;
                     soma_extremos = soma_extremos + f_extremo;
 
-                    lista.add(f_extremo);
+                    DecimalFormat df = new DecimalFormat("0.#####");
+                    String fxtremos = df.format(soma_extremos);
+
+                    lista.add(fxtremos);
                 }
 
             }
