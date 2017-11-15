@@ -29,6 +29,7 @@ public class TelaSimpson extends javax.swing.JFrame {
         initComponents();
         grafica.setBounds(480, 60, 600, 300);
         add(grafica);
+
         setExtendedState(MAXIMIZED_BOTH);
 
 //        PreencherTabela();
@@ -278,6 +279,44 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
 
+//        double b = Double.parseDouble(txt_b.getText());
+//        double a = Double.parseDouble(txt_a.getText());
+//        double n = Double.parseDouble(txt_n.getText());
+        String funcao = txt_funcao.getText();
+        if (funcao.equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha o Campo da Função");
+        } else {
+            if (txt_b.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Indique o Valor de b");
+            } else {
+                if (txt_a.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Indique o Valor de a");
+                } else {
+                    if (txt_n.getText().equals("")) {
+
+                        JOptionPane.showMessageDialog(null, "Indique  o Valor de n");
+                    } else {
+
+                        // AGORA JA ESTAMOS NOS VALORES
+                        if (Double.parseDouble(txt_b.getText()) <= Double.parseDouble(txt_a.getText())) {
+                            JOptionPane.showMessageDialog(null, " O Valor deve ser menor que de b");
+
+                        } else {
+                            int resto = (Integer.parseInt(txt_n.getText()) % 2);
+                            int nn = Integer.parseInt(txt_n.getText());
+
+                            if ((resto == 0) && nn > 0) {
+                                PreencherTabela();
+                               // JOptionPane.showMessageDialog(null, " Deu Certo");
+                            } else {
+                                JOptionPane.showMessageDialog(null, " O Valor de n deve ser par e inteiro positivo");
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
         //PreencherTabela();
     }//GEN-LAST:event_btn_calcularActionPerformed
 
@@ -449,11 +488,11 @@ public class TelaSimpson extends javax.swing.JFrame {
         this.tabelaSimpson.setAutoResizeMode(tabelaSimpson.AUTO_RESIZE_ALL_COLUMNS);
 
         this.tabelaSimpson.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-       // preenchendo a Tabela
+
+        // preenchendo a Tabela
         double[] x = new double[200];
         double[] y = new double[200];
-        double xi = a- 10;
+        double xi = a - 10;
         for (int i = 0; i < 200; i++) {
             x[i] = xi + i * 0.1;
             y[i] = func.eval(x[i]);
@@ -462,9 +501,8 @@ public class TelaSimpson extends javax.swing.JFrame {
         grafica.addLegend("SOUTH");
         grafica.removeAllPlots();
         grafica.addLinePlot(txt_funcao.getText(), x, y);
-        
-        // Fim da Funcao
 
+        // Fim da Funcao
         try {
 
             for (int i = 0; i < lista.size(); i++) {
