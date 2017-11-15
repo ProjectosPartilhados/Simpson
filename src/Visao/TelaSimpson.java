@@ -7,6 +7,7 @@ package Visao;
 
 import Modelo.ModeloTabela;
 import java.awt.List;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -318,22 +319,19 @@ public class TelaSimpson extends javax.swing.JFrame {
 
             // System.out.println(i); quando FOR pAR
             if ((i != 0) && (i != n) && ((i % 2) == 0)) {
-                System.out.println("I  Par = " + i);
+
                 funcao_par = X * X;
                 soma_par = soma_par + funcao_par;
-                System.out.println("Valor de Cada Funcao Par:" + funcao_par);
-                System.out.println("F" + i + " = " + funcao_par);
+
                 lista.add(funcao_par);
 
             } else {
+
                 // Quando FOR IMPAR
                 if ((i != 0) && (i != n)) {
-                    System.out.println("I  Impar = " + i);
+
                     funcao_impar = X * X;
                     soma_impar = soma_impar + funcao_impar;
-
-                    System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
-                    System.out.println("F" + i + " = " + funcao_impar);
 
                     lista.add(funcao_impar);
 
@@ -341,8 +339,6 @@ public class TelaSimpson extends javax.swing.JFrame {
                     double f_extremo = X * X;
                     soma_extremos = soma_extremos + f_extremo;
 
-                    System.out.println("indice" + i);
-                    System.out.println("F" + i + " = " + f_extremo + "\n");
                     lista.add(f_extremo);
                 }
 
@@ -350,19 +346,12 @@ public class TelaSimpson extends javax.swing.JFrame {
 
         }
 
-        System.out.println("h = " + h);
-        System.out.println("Soma De Valores Pares: " + soma_par);
-        System.out.println("Soma De Extremos: " + soma_extremos);
-        System.out.println("Soma De Valores Impares: " + soma_impar + "\n");
-
         double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
 
-        System.out.println("Area da Figura= " + formula);
+        DecimalFormat df = new DecimalFormat("0.#####");
+        String area = df.format(formula);
 
-        for (int i = 0; i < lista.size(); i++) {
-
-            System.out.println("F" + i + " = " + lista.get(i).toString() + "\n");
-        }
+        lbsolucao.setText("" + area);
 
         ArrayList dados = new ArrayList();
         String[] colunas = new String[]{"i", "X=x +i*h", "F(x)"};
