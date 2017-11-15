@@ -12,9 +12,9 @@ package Visao;
 public class teste {
 
     public static void main(String[] args) {
-        funcao f = new funcao("x");
+        funcao f = new funcao("x^2-2");
 
-        simpson s = new simpson();
+        Secante s = new Secante();
         System.out.println(s.raiz(f, 3, 4, 10, 1e-6));
 
     }

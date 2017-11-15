@@ -20,6 +20,7 @@ public class funcao {
         j.addStandardConstants();
         j.addStandardFunctions();
         j.parseExpression(def);
+        
         // Reportar erro
         if (j.hasError()) {
             System.out.println("ERRO: " + j.getErrorInfo());
