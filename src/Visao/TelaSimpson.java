@@ -181,25 +181,24 @@ public class TelaSimpson extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
-//        PreencherTabela();
-        double b = Double.parseDouble(txt_b.getText());
-        double a = Double.parseDouble(txt_a.getText());
-        
-        if (txt_b.getText().equals("") || txt_a.getText().equals("") || txt_n.getText().equals("")) {
 
-            JOptionPane.showMessageDialog(null, "Os Campos b , a e n nao deve, ser nulos");
-        } else {
-
-            if (b <=a) {
-                JOptionPane.showMessageDialog(null, "b>a");
-
-            } else {
-//                h = (limite_superior - limite_inferior) / Integer.parseInt(txt_n.getText());
-//                lbh.setText("" + h);
-            }
-        }
-
-
+//        double b = Double.parseDouble(txt_b.getText());
+//        double a = Double.parseDouble(txt_a.getText());
+//        
+//        if (txt_b.getText().equals("") || txt_a.getText().equals("") || txt_n.getText().equals("")) {
+//
+//            JOptionPane.showMessageDialog(null, "Os Campos b , a e n nao deve, ser nulos");
+//        } else {
+//
+//            if (b <=a) {
+//                JOptionPane.showMessageDialog(null, "b>a");
+//
+//            } else {
+////                h = (limite_superior - limite_inferior) / Integer.parseInt(txt_n.getText());
+////                lbh.setText("" + h);
+//            }
+//        }
+        PreencherTabela();
     }//GEN-LAST:event_btn_calcularActionPerformed
 
     private void txt_nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nActionPerformed
@@ -267,35 +266,48 @@ public class TelaSimpson extends javax.swing.JFrame {
             this.tabelaSimpson.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         }
+        
 
+        // DECLARANDO OS EXTREMOS E A FUNCAO MAE
+        double b = Double.parseDouble(txt_b.getText());
+        double a = Double.parseDouble(txt_a.getText());
         int n = Integer.parseInt(txt_n.getText());
 
-        double pa = limite_inferior;
-        double x = 1;
-        double f1 = 0, fn = 0, fi;
-
+        // DECLARANDO VARIAVEIS RELACINADAS  VALORES A SEREM CAPTURADOS POR CADA I
+        double X = a;
         double funcao_par = 1, funcao_impar = 1;
-
-        h = (limite_superior - limite_inferior) / n;
-
-        // 4 impares e 2 pares
+       
+        // DECLARANDO O H
+        h = (b - a) / n;
+        
+        
+          // 4 impares e 2 pares DELARANDO VARIAVEIS RELACIONADAS A FORMULAS
         double soma_par = 0, soma_impar = 0, soma_extremos = 0;
+        
+        
+        // DECLARANDO UMA LISTA QUE RECEBERA TODOS OS VALORES EM CADA ITERACAO
+         ArrayList lista = new ArrayList<String>();
+        
+       
+        // ATRIBUINDO O H A TEXTFIELD
+        lbh.setText(""+h);
+        
 
-        System.out.println("h= " + h);
+      
 
-        ArrayList lista = new ArrayList<Object>();
+       
 
         for (int i = 0; i <= n; i++) {
             if (i == 0) {
-                pa = pa;
+                X = X;
             } else {
-                pa = pa + h;
+                X = X + h;
             }
 
             // System.out.println(i); quando FOR pAR
             if ((i != 0) && (i != n) && ((i % 2) == 0)) {
                 System.out.println("I  Par = " + i);
-                funcao_par = pa * pa;
+                funcao_par = X * X;
                 soma_par = soma_par + funcao_par;
                 System.out.println("Valor de Cada Funcao Par:" + funcao_par);
                 System.out.println("F" + i + " = " + funcao_par);
@@ -305,49 +317,51 @@ public class TelaSimpson extends javax.swing.JFrame {
                 // Quando FOR IMPAR
                 if ((i != 0) && (i != n)) {
                     System.out.println("I  Impar = " + i);
-                    funcao_impar = pa * pa;
+                    funcao_impar = X * X;
                     soma_impar = soma_impar + funcao_impar;
 
                     System.out.println("Valor de Cada Funcao ImPar:" + funcao_impar);
                     System.out.println("F" + i + " = " + funcao_impar);
 
                     lista.add(funcao_impar);
+
                 } else {
-                    double fo = pa * pa;
-                    soma_extremos = soma_extremos + fo;
+                    double f_extremo = X * X;
+                    soma_extremos = soma_extremos + f_extremo;
 
                     System.out.println("indice" + i);
-                    System.out.println("F" + i + " = " + fo + "\n");
-                    lista.add(fo);
+                    System.out.println("F" + i + " = " + f_extremo + "\n");
+                    lista.add(f_extremo);
                 }
 
             }
 
         }
 
-//        System.out.println("h = " + h);
-//        System.out.println("Soma De Valores Pares: " + soma_par);
-//        System.out.println("Soma De Extremos: " + soma_extremos);
-//        System.out.println("Soma De Valores Impares: " + soma_impar + "\n");
-//
-//        double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
-//
-//        System.out.println("Area da Figura= " + formula);
+        System.out.println("h = " + h);
+        System.out.println("Soma De Valores Pares: " + soma_par);
+        System.out.println("Soma De Extremos: " + soma_extremos);
+        System.out.println("Soma De Valores Impares: " + soma_impar + "\n");
+
+        double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
+
+        System.out.println("Area da Figura= " + formula);
+
         for (int i = 0; i < lista.size(); i++) {
-            System.out.println("Valor" + i + ":" + lista.get(i).toString() + "\n");
+            
+            System.out.println("F" + i + " = " + lista.get(i).toString() + "\n");
         }
 //        Por Resultado Na Tabela
-        try {
-
-            for (int i = 0; i < lista.size(); i++) {
-
-                // dados.add(new Object[]{lista.get(i)});
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
-        }
-
+//        try {
+////
+////            for (int i = 0; i < lista.size(); i++) {
+////
+////                // dados.add(new Object[]{lista.get(i)});
+////            }
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
+//        }
     }
 
 
