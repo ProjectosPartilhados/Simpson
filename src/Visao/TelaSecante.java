@@ -196,7 +196,7 @@ public class TelaSecante extends javax.swing.JFrame {
         }
         grafica.addLegend("SOUTH");
         grafica.removeAllPlots();
-        grafica.addLinePlot(funcao, x,y);
+        grafica.addLinePlot(funcao, x, y);
 
 
     }//GEN-LAST:event_btncalcularActionPerformed

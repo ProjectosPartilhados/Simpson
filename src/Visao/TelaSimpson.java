@@ -52,7 +52,7 @@ public class TelaSimpson extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txt_n = new javax.swing.JTextField();
         btn_calcular = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txt_funcao = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lbsolucao = new javax.swing.JLabel();
@@ -147,7 +147,7 @@ public class TelaSimpson extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_funcao, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btn_calcular))
                         .addGap(21, 21, 21)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +192,7 @@ public class TelaSimpson extends javax.swing.JFrame {
                                 .addGap(25, 25, 25)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txt_funcao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -221,7 +221,6 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
 
-      
         PreencherTabela();
     }//GEN-LAST:event_btn_calcularActionPerformed
 
@@ -295,6 +294,10 @@ public class TelaSimpson extends javax.swing.JFrame {
 
         // ATRIBUINDO O H A TEXTFIELD
         lbh.setText("" + hh);
+        
+        // Funcao
+        funcao func = new funcao(txt_funcao.getText());
+        
 
         for (int i = 0; i <= n; i++) {
             if (i == 0) {
@@ -312,7 +315,8 @@ public class TelaSimpson extends javax.swing.JFrame {
             // System.out.println(i); quando FOR pAR
             if ((i != 0) && (i != n) && ((i % 2) == 0)) {
 
-                funcao_par = X * X;
+                //funcao_par = X * X;
+                funcao_par= func.eval(X);
                 soma_par = soma_par + funcao_par;
                 DecimalFormat df = new DecimalFormat("0.#####");
                 String fpar = df.format(soma_par);
@@ -324,7 +328,9 @@ public class TelaSimpson extends javax.swing.JFrame {
                 // Quando FOR IMPAR
                 if ((i != 0) && (i != n)) {
 
-                    funcao_impar = X * X;
+                    //funcao_impar = X * X;
+                    
+                    funcao_impar=func.eval(X);
                     soma_impar = soma_impar + funcao_impar;
 
                     DecimalFormat df = new DecimalFormat("0.#####");
@@ -333,7 +339,9 @@ public class TelaSimpson extends javax.swing.JFrame {
                     lista.add(fimpar);
 
                 } else {
-                    double f_extremo = X * X;
+                    //double f_extremo = X * X;
+                    double f_extremo;
+                   f_extremo= func.eval(X);
                     soma_extremos = soma_extremos + f_extremo;
 
                     DecimalFormat df = new DecimalFormat("0.#####");
@@ -345,44 +353,78 @@ public class TelaSimpson extends javax.swing.JFrame {
             }
 
         }
+        // RAIZ
+   
+    double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
 
-        double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
+    // AREDONDAMOS A SOLUCAO
+    DecimalFormat df = new DecimalFormat("0.#####");
+    String area = df.format(formula);
 
-        // AREDONDAMOS A SOLUCAO
-        DecimalFormat df = new DecimalFormat("0.#####");
-        String area = df.format(formula);
-        lbsolucao.setText("" + area);
+    lbsolucao.setText (
+    "" + area);
 
         ArrayList dados = new ArrayList();
-        String[] colunas = new String[]{"i", "X=x +i*h", "F(x)"};
+    String[] colunas = new String[]{"i", "X=x +i*h", "F(x)"};
 
-        ModeloTabela modelo = new ModeloTabela(dados, colunas);
-        tabelaSimpson.setModel(modelo);
-        this.tabelaSimpson.getColumnModel().getColumn(0).setPreferredWidth(100);
-        this.tabelaSimpson.getColumnModel().getColumn(1).setPreferredWidth(100);
-        this.tabelaSimpson.getColumnModel().getColumn(2).setPreferredWidth(100);
+    ModeloTabela modelo = new ModeloTabela(dados, colunas);
 
-        this.tabelaSimpson.getColumnModel().getColumn(0).setResizable(false);
-        this.tabelaSimpson.getColumnModel().getColumn(1).setResizable(false);
-        this.tabelaSimpson.getColumnModel().getColumn(2).setResizable(false);
+    tabelaSimpson.setModel (modelo);
+     
 
-        this.tabelaSimpson.getTableHeader().setReorderingAllowed(false);
-        this.tabelaSimpson.setAutoResizeMode(tabelaSimpson.AUTO_RESIZE_ALL_COLUMNS);
-        this.tabelaSimpson.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    this.tabelaSimpson.getColumnModel ()
+    .getColumn(0).setPreferredWidth(100);
+         
 
+    this.tabelaSimpson.getColumnModel ()
+    .getColumn(1).setPreferredWidth(100);
+         
+
+    this.tabelaSimpson.getColumnModel ()
+    .getColumn(2).setPreferredWidth(100);
+
+         
+
+    this.tabelaSimpson.getColumnModel ()
+    .getColumn(0).setResizable(false);
+         
+
+    this.tabelaSimpson.getColumnModel ()
+    .getColumn(1).setResizable(false);
+         
+
+    this.tabelaSimpson.getColumnModel ()
+    .getColumn(2).setResizable(false);
+
+         
+
+    this.tabelaSimpson.getTableHeader ()
+    .setReorderingAllowed(false);
+         
+
+    this.tabelaSimpson.setAutoResizeMode (tabelaSimpson.AUTO_RESIZE_ALL_COLUMNS);
+     
+
+    this.tabelaSimpson.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+
+    
         try {
 
             for (int i = 0; i < lista.size(); i++) {
 
-                dados.add(new Object[]{i, listaX.get(i), lista.get(i)});
+            dados.add(new Object[]{i, listaX.get(i), lista.get(i)});
 
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
         }
 
     }
+    catch (Exception e
+
+    
+        ) {
+            JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
+    }
+
+}
 
 //        Por Resultado Na Tabela
 
@@ -397,12 +439,25 @@ public class TelaSimpson extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbh;
     private javax.swing.JLabel lbsolucao;
     private javax.swing.JTable tabelaSimpson;
     private javax.swing.JTextField txt_a;
     private javax.swing.JTextField txt_b;
+    private javax.swing.JTextField txt_funcao;
     private javax.swing.JTextField txt_n;
     // End of variables declaration//GEN-END:variables
+
+
+     public double raiz(funcao f, double a, double b, double n) {
+        double r = Double.NaN;
+        double x2 = a;
+        int k = 0;
+        
+        
+      
+        return r;
+    }
+
+
 }
