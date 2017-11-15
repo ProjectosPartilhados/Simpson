@@ -13,7 +13,17 @@ import org.nfunk.jep.JEP;
  */
 public class funcao {
 
-  JEP j = new JEP();
-  
-    
+    JEP j = new JEP();
+
+    public funcao(String def) {
+        j.addVariable("x", 0);
+        j.addStandardConstants();
+        j.addStandardFunctions();
+        j.parseExpression(def);
+        // Reportar erro
+        if (j.hasError()) {
+            System.out.println("ERRO: " + j.getErrorInfo());
+        }
+    }
+
 }
