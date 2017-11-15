@@ -52,10 +52,13 @@ public class TelaSimpson extends javax.swing.JFrame {
         txt_n = new javax.swing.JTextField();
         btn_calcular = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lbsolucao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Método de Simpson", 0, 0, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Método de Simpson", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         tabelaSimpson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,64 +107,99 @@ public class TelaSimpson extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel5.setText("Solução");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel7.setText("Area=");
+
+        lbsolucao.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lbsolucao.setText("Solucao");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_a))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_b, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_n)))
-                .addGap(58, 58, 58)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_calcular))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_a))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_b, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_n)))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_calcular))
+                        .addGap(21, 21, 21)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbsolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4)
-                        .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(txt_b, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_a, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4)
+                    .addComponent(lbh, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txt_n, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(txt_b, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txt_a, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(txt_n, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(lbsolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(41, 41, 41)
                         .addComponent(btn_calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -246,28 +284,6 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     public void PreencherTabela() {
 
-        for (int i = 0; i <= Integer.parseInt(txt_n.getText()); i++) {
-
-            ArrayList dados = new ArrayList();
-            String[] colunas = new String[]{"i", "X=x +i*h", "F(x)"};
-
-            ModeloTabela modelo = new ModeloTabela(dados, colunas);
-            tabelaSimpson.setModel(modelo);
-            this.tabelaSimpson.getColumnModel().getColumn(0).setPreferredWidth(100);
-            this.tabelaSimpson.getColumnModel().getColumn(1).setPreferredWidth(100);
-            this.tabelaSimpson.getColumnModel().getColumn(2).setPreferredWidth(100);
-
-            this.tabelaSimpson.getColumnModel().getColumn(0).setResizable(false);
-            this.tabelaSimpson.getColumnModel().getColumn(1).setResizable(false);
-            this.tabelaSimpson.getColumnModel().getColumn(2).setResizable(false);
-
-            this.tabelaSimpson.getTableHeader().setReorderingAllowed(false);
-            this.tabelaSimpson.setAutoResizeMode(tabelaSimpson.AUTO_RESIZE_ALL_COLUMNS);
-            this.tabelaSimpson.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        }
-        
-
         // DECLARANDO OS EXTREMOS E A FUNCAO MAE
         double b = Double.parseDouble(txt_b.getText());
         double a = Double.parseDouble(txt_a.getText());
@@ -276,32 +292,28 @@ public class TelaSimpson extends javax.swing.JFrame {
         // DECLARANDO VARIAVEIS RELACINADAS  VALORES A SEREM CAPTURADOS POR CADA I
         double X = a;
         double funcao_par = 1, funcao_impar = 1;
-       
+
         // DECLARANDO O H
         h = (b - a) / n;
-        
-        
-          // 4 impares e 2 pares DELARANDO VARIAVEIS RELACIONADAS A FORMULAS
+
+        // 4 impares e 2 pares DELARANDO VARIAVEIS RELACIONADAS A FORMULAS
         double soma_par = 0, soma_impar = 0, soma_extremos = 0;
-        
-        
+
         // DECLARANDO UMA LISTA QUE RECEBERA TODOS OS VALORES EM CADA ITERACAO
-         ArrayList lista = new ArrayList<String>();
-        
-       
+        ArrayList lista = new ArrayList<String>();
+
+        ArrayList listaX = new ArrayList<Double>();
+
         // ATRIBUINDO O H A TEXTFIELD
-        lbh.setText(""+h);
-        
-
-      
-
-       
+        lbh.setText("" + h);
 
         for (int i = 0; i <= n; i++) {
             if (i == 0) {
                 X = X;
+                listaX.add(X);
             } else {
                 X = X + h;
+                listaX.add(X);
             }
 
             // System.out.println(i); quando FOR pAR
@@ -348,22 +360,42 @@ public class TelaSimpson extends javax.swing.JFrame {
         System.out.println("Area da Figura= " + formula);
 
         for (int i = 0; i < lista.size(); i++) {
-            
+
             System.out.println("F" + i + " = " + lista.get(i).toString() + "\n");
         }
-//        Por Resultado Na Tabela
-//        try {
-////
-////            for (int i = 0; i < lista.size(); i++) {
-////
-////                // dados.add(new Object[]{lista.get(i)});
-////            }
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
-//        }
+
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"i", "X=x +i*h", "F(x)"};
+
+        ModeloTabela modelo = new ModeloTabela(dados, colunas);
+        tabelaSimpson.setModel(modelo);
+        this.tabelaSimpson.getColumnModel().getColumn(0).setPreferredWidth(100);
+        this.tabelaSimpson.getColumnModel().getColumn(1).setPreferredWidth(100);
+        this.tabelaSimpson.getColumnModel().getColumn(2).setPreferredWidth(100);
+
+        this.tabelaSimpson.getColumnModel().getColumn(0).setResizable(false);
+        this.tabelaSimpson.getColumnModel().getColumn(1).setResizable(false);
+        this.tabelaSimpson.getColumnModel().getColumn(2).setResizable(false);
+
+        this.tabelaSimpson.getTableHeader().setReorderingAllowed(false);
+        this.tabelaSimpson.setAutoResizeMode(tabelaSimpson.AUTO_RESIZE_ALL_COLUMNS);
+        this.tabelaSimpson.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        try {
+
+            for (int i = 0; i < lista.size(); i++) {
+
+                dados.add(new Object[]{i, listaX.get(i), lista.get(i)});
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erro ao listar: " + e.getMessage());
+        }
+
     }
 
+//        Por Resultado Na Tabela
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_calcular;
@@ -371,11 +403,14 @@ public class TelaSimpson extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbh;
+    private javax.swing.JLabel lbsolucao;
     private javax.swing.JTable tabelaSimpson;
     private javax.swing.JTextField txt_a;
     private javax.swing.JTextField txt_b;
