@@ -278,7 +278,7 @@ public class TelaSimpson extends javax.swing.JFrame {
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
 
-        PreencherTabela();
+        //PreencherTabela();
     }//GEN-LAST:event_btn_calcularActionPerformed
 
     private void txt_nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nActionPerformed
@@ -449,6 +449,21 @@ public class TelaSimpson extends javax.swing.JFrame {
         this.tabelaSimpson.setAutoResizeMode(tabelaSimpson.AUTO_RESIZE_ALL_COLUMNS);
 
         this.tabelaSimpson.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+       // preenchendo a Tabela
+        double[] x = new double[200];
+        double[] y = new double[200];
+        double xi = a- 10;
+        for (int i = 0; i < 200; i++) {
+            x[i] = xi + i * 0.1;
+            y[i] = func.eval(x[i]);
+
+        }
+        grafica.addLegend("SOUTH");
+        grafica.removeAllPlots();
+        grafica.addLinePlot(txt_funcao.getText(), x, y);
+        
+        // Fim da Funcao
 
         try {
 
