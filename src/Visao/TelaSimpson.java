@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import org.math.plot.Plot2DPanel;
 
 /**
  *
@@ -26,8 +27,11 @@ public class TelaSimpson extends javax.swing.JFrame {
      */
     public TelaSimpson() {
         initComponents();
-//        PreencherTabela();
+        grafica.setBounds(480, 60, 600, 300);
+        add(grafica);
+        setExtendedState(MAXIMIZED_BOTH);
 
+//        PreencherTabela();
     }
 
     /**
@@ -406,14 +410,13 @@ public class TelaSimpson extends javax.swing.JFrame {
         }
         // RAIZ
 
-        double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
+        double formula = Math.abs((h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par));
 
         // AREDONDAMOS A SOLUCAO
         DecimalFormat df = new DecimalFormat("0.#####");
         String area = df.format(formula);
 
         lbsolucao.setText("" + area);
-                
 
         ArrayList dados = new ArrayList();
         String[] colunas = new String[]{"i", "X=x +i*h", "F(x)"};
@@ -488,5 +491,8 @@ public class TelaSimpson extends javax.swing.JFrame {
     private javax.swing.JTextField txt_funcao;
     private javax.swing.JTextField txt_n;
     // End of variables declaration//GEN-END:variables
+
+// PARTE GRÁFICA 
+    Plot2DPanel grafica = new Plot2DPanel();
 
 }

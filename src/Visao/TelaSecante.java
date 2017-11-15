@@ -6,6 +6,7 @@
 package Visao;
 
 import org.math.plot.Plot2DPanel;
+import org.math.plot.Plot3DPanel;
 
 /**
  *
@@ -255,4 +256,6 @@ public class TelaSecante extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     Plot2DPanel grafica = new Plot2DPanel();
+    
+    // Plot3DPanel grafica= new Plot3DPanel();
 }
