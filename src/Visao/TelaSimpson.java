@@ -311,10 +311,14 @@ public class TelaSimpson extends javax.swing.JFrame {
         for (int i = 0; i <= n; i++) {
             if (i == 0) {
                 X = X;
-                listaX.add(X);
+                DecimalFormat df = new DecimalFormat("0.#####");
+                String x = df.format(X);
+                listaX.add(x);
             } else {
                 X = X + h;
-                listaX.add(X);
+                DecimalFormat df = new DecimalFormat("0.#####");
+                String x = df.format(X);
+                listaX.add(x);
             }
 
             // System.out.println(i); quando FOR pAR
@@ -348,9 +352,9 @@ public class TelaSimpson extends javax.swing.JFrame {
 
         double formula = (h / 3) * (soma_extremos + 4 * soma_impar + 2 * soma_par);
 
+        // AREDONDAMOS A SOLUCAO
         DecimalFormat df = new DecimalFormat("0.#####");
         String area = df.format(formula);
-
         lbsolucao.setText("" + area);
 
         ArrayList dados = new ArrayList();
